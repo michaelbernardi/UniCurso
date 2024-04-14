@@ -14,10 +14,19 @@ public class Curso {
     @NotBlank
     @Size(max = 150)
     private String nome;
-    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
-    private List<Materia> materias;
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    private List<Materia> materias = new ArrayList<>();
+    @ManyToMany(mappedBy = "cursos", cascade = CascadeType.MERGE)
+    private List<Professor> professores = new ArrayList<>();
     @ManyToMany(mappedBy = "cursos")
-    private List<Professor> professors = new ArrayList<>();
+    private List<Aluno> alunos = new ArrayList<>();
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Inscricao> inscricoes = new ArrayList<>();
+
+    public boolean isFull() {
+        int limiteMaximoInscricoes = 30;
+        return inscricoes.size() >= limiteMaximoInscricoes;
+    }
 
     public Long getId() {
         return id;
@@ -43,12 +52,12 @@ public class Curso {
         this.materias = materias;
     }
 
-    public List<Professor> getProfessors() {
-        return professors;
+    public List<Professor> getProfessores() {
+        return professores;
     }
 
-    public void setProfessors(List<Professor> professors) {
-        this.professors = professors;
+    public void setProfessores(List<Professor> professores) {
+        this.professores = professores;
     }
 
     public List<Aluno> getAlunos() {
@@ -59,6 +68,11 @@ public class Curso {
         this.alunos = alunos;
     }
 
-    @ManyToMany(mappedBy = "cursos")
-    private List<Aluno> alunos = new ArrayList<>();
+    public List<Inscricao> getInscricoes() {
+        return inscricoes;
+    }
+
+    public void setInscricoes(List<Inscricao> inscricoes) {
+        this.inscricoes = inscricoes;
+    }
 }

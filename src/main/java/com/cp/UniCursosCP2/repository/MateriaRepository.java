@@ -1,9 +1,9 @@
 package com.cp.UniCursosCP2.repository;
 
-import com.cp.UniCursosCP2.modal.Aluno;
+import com.cp.UniCursosCP2.modal.Materia;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AlunoRepository extends JpaRepository<Aluno, Long> {
+public interface MateriaRepository extends JpaRepository<Materia, Long> {
 }

@@ -1,13 +1,10 @@
-package com.cp.UniCursosCP2.modal;
+package com.cp.UniCursosCP2.dto;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-@Entity
-public class Materia {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MateriaDTO {
+
     private Long id;
 
     @NotBlank
@@ -16,9 +13,6 @@ public class Materia {
 
     @Size(max = 500)
     private String descricao;
-
-    @ManyToOne
-    private Curso curso;
 
     public Long getId() {
         return id;
@@ -42,14 +36,6 @@ public class Materia {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
     }
 }
 

@@ -1,4 +1,9 @@
 package com.cp.UniCursosCP2.repository;
 
-public interface ProfessorRepository {
+import com.cp.UniCursosCP2.modal.Professor;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProfessorRepository extends JpaRepository<Professor, Long> {
 }
