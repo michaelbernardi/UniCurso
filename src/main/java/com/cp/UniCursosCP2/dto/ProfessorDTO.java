@@ -1,5 +1,8 @@
 package com.cp.UniCursosCP2.dto;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -7,6 +10,9 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
 public class ProfessorDTO {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @NotBlank
     @Size(max = 100)
@@ -71,5 +77,13 @@ public class ProfessorDTO {
 
     public void setAnosExperienciaTecnologia(int anosExperienciaTecnologia) {
         this.anosExperienciaTecnologia = anosExperienciaTecnologia;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

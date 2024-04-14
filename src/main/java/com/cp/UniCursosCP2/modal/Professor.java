@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +21,40 @@ public class Professor {
     @NotBlank
     private String especialidade;
 
+    private boolean fluenciaIngles;
+
+    private boolean fluenciaPortugues;
+
     @ManyToMany
     private List<Curso> cursos = new ArrayList<>();
+
+    private LocalDate dataInicioExperienciaTecnologia;
+
+    private LocalDate anosExperienciaTecnologia;
+
+    public LocalDate getAnosExperienciaTecnologia() {
+        return anosExperienciaTecnologia;
+    }
+
+    public void setAnosExperienciaTecnologia(LocalDate anosExperienciaTecnologia) {
+        this.anosExperienciaTecnologia = anosExperienciaTecnologia;
+    }
+
+    public boolean isFluenciaIngles() {
+        return fluenciaIngles;
+    }
+    public void setFluenciaIngles(boolean fluenciaIngles) {
+        this.fluenciaIngles = fluenciaIngles;
+    }
+
+    public boolean isFluenciaPortugues() {
+        return fluenciaPortugues;
+    }
+
+    public void setFluenciaPortugues(boolean fluenciaPortugues) {
+        this.fluenciaPortugues = fluenciaPortugues;
+    }
+    
 
     public Long getId() {
         return id;
@@ -53,5 +86,17 @@ public class Professor {
 
     public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
+    }
+
+    public LocalDate getDataInicioExperienciaTecnologia() {
+        return dataInicioExperienciaTecnologia;
+    }
+
+    public void setDataInicioExperienciaTecnologia(LocalDate dataInicioExperienciaTecnologia) {
+        this.dataInicioExperienciaTecnologia = dataInicioExperienciaTecnologia;
+    }
+
+    public void setAnosExperienciaTecnologia(int anosExperiencia) {
+        this.anosExperienciaTecnologia = LocalDate.ofEpochDay(anosExperiencia);
     }
 }
