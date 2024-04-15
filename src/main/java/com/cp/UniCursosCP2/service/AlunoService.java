@@ -32,18 +32,16 @@ public class AlunoService {
     }
 
     @Transactional
-    public AlunoDTO buscarAlunoPorId(Long id) {
-        Aluno aluno = alunoRepository.findById(id)
+    public Aluno buscarAlunoPorId(Long id) {
+        return alunoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Aluno não encontrado"));
-        return convertToDto(aluno);
     }
 
     @Transactional
-    public AlunoDTO salvarAluno(AlunoDTO alunoDTO) {
-        Aluno aluno = convertToEntity(alunoDTO);
-        Aluno alunoSalvo = alunoRepository.save(aluno);
-        return convertToDto(alunoSalvo);
+    public Aluno salvarAluno(Aluno aluno) {
+        return alunoRepository.save(aluno);
     }
+
 
     @Transactional
     public void deletarAluno(Long id) {
@@ -86,6 +84,15 @@ public class AlunoService {
             throw new GraduacaoIncompletaException("O aluno deve ter concluído a graduação há pelo menos 5 anos.");
         }
     }
+
+    private void validarIdadeMinima(LocalDate dataNascimento) {
+        LocalDate dataAtual = LocalDate.now();
+        Period periodo = Period.between(dataNascimento, dataAtual);
+        if (periodo.getYears() < 18) {
+            throw new EntityNotFoundException("O aluno deve ter no mínimo 18 anos de idade.");
+        }
+    }
+
 
     private void validarCPF(String cpf) throws CPFInvalidoException {
         // Remove caracteres não numéricos

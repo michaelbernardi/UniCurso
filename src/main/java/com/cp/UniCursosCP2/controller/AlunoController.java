@@ -1,6 +1,7 @@
 package com.cp.UniCursosCP2.controller;
 
 import com.cp.UniCursosCP2.dto.AlunoDTO;
+import com.cp.UniCursosCP2.modal.Aluno;
 import com.cp.UniCursosCP2.service.AlunoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +26,14 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AlunoDTO> buscarAlunoPorId(@PathVariable Long id) {
-        AlunoDTO aluno = alunoService.buscarAlunoPorId(id);
+    public ResponseEntity<Aluno> buscarAlunoPorId(@PathVariable Long id) {
+        Aluno aluno = alunoService.buscarAlunoPorId(id);
         return ResponseEntity.ok(aluno);
     }
 
     @PostMapping
-    public ResponseEntity<AlunoDTO> criarAluno(@Valid @RequestBody AlunoDTO alunoDTO) {
-        AlunoDTO novoAluno = alunoService.salvarAluno(alunoDTO);
+    public ResponseEntity<Aluno> criarAluno(@Valid @RequestBody Aluno aluno) {
+        Aluno novoAluno = alunoService.salvarAluno(aluno);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoAluno);
     }
 

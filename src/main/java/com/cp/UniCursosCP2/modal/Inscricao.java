@@ -18,7 +18,7 @@ public class Inscricao {
 
     @ManyToOne
     @JoinColumn(name = "aluno_id")
-    private AlunoDTO aluno;
+    private Aluno aluno;
 
     @PastOrPresent
     private LocalDateTime dataInscricao;
@@ -39,11 +39,11 @@ public class Inscricao {
         this.curso = curso;
     }
 
-    public AlunoDTO getAluno() {
+    public Aluno getAluno() {
         return aluno;
     }
 
-    public void setAluno(AlunoDTO aluno) {
+    public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
 
@@ -54,5 +54,6 @@ public class Inscricao {
     public void setDataInscricao(LocalDateTime dataInscricao) {
         this.dataInscricao = dataInscricao;
     }
+
 }
 

@@ -1,6 +1,5 @@
 package com.cp.UniCursosCP2.service;
 
-import com.cp.UniCursosCP2.dto.AlunoDTO;
 import com.cp.UniCursosCP2.modal.Aluno;
 import com.cp.UniCursosCP2.modal.Curso;
 import com.cp.UniCursosCP2.modal.Inscricao;
@@ -27,7 +26,7 @@ public class InscricaoService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public Inscricao inscreverAlunoEmCurso(Long alunoId, Long cursoId) {
-        AlunoDTO aluno = alunoService.buscarAlunoPorId(alunoId);
+        Aluno aluno = alunoService.buscarAlunoPorId(alunoId);
         Curso curso = cursoService.buscarCursoPorId(cursoId);
 
         Inscricao inscricao = new Inscricao();

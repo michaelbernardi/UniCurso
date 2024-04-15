@@ -21,6 +21,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.modelmapper:modelmapper:2.4.4'
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation 'jakarta.servlet:jakarta.servlet-api:5.0.0'
+	implementation 'javax.servlet:javax.servlet-api:4.0.1'
+	implementation 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 }
